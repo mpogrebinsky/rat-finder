@@ -5,6 +5,5 @@
     <item
         android:id="@+id/on_logout"
         android:orderInCategory="100"
-        android:title="Sign Out"
-        app:showAsAction="always" />
+        android:title="Sign Out" />
 </menu>

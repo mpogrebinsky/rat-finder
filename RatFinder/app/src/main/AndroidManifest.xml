@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoadScreen" />
         <activity android:name=".Login"></activity>
     </application>
 
