@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -25,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,5 +49,4 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
         return false;
     }
->>>>>>> b65fe29c547f805246ffbf98442bb8935e40b7f5
 }
