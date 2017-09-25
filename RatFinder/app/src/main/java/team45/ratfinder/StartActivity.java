@@ -39,6 +39,7 @@ public class StartActivity extends AppCompatActivity{
         if (id == R.id.on_logout) {
             Intent intent = new Intent(StartActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
             return true;
         }
 
