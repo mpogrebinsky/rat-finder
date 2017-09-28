@@ -5,40 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="team45.ratfinder.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="team45.ratfinder.RegisterActivity"
+    tools:showIn="@layout/activity_register">
 
     <Button
         android:id="@+id/cancel"
         android:layout_width="164dp"
         android:layout_height="43dp"
-        android:layout_marginTop="14dp"
-        android:text="Register"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/errorMessage"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:text="Cancel"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
         android:id="@+id/submit_id"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="164dp"
         android:layout_height="43dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="0dp"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/errorMessage"
-        android:layout_marginLeft="182dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/errorMessage"
-        android:layout_width="325dp"
-        android:layout_height="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="0dp"
-        android:text="username or password is incorrect"
-        android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/cancel"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
@@ -73,20 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="26dp"
-        android:text="Sign In"
+        android:text="Register"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/cancel"
-        android:layout_width="85dp"
-        android:layout_height="47dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="15dp"
-        android:text="Cancel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submit_id" />
 </android.support.constraint.ConstraintLayout>
