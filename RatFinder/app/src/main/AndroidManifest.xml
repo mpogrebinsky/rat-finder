@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,22 +20,22 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".StartActivity"
+        android:name=".controller.StartActivity"
         android:label="Rat Finder"
-        android:parentActivityName=".MainActivity"
+        android:parentActivityName=".controller.MainActivity"
         android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            android:value=".controller.MainActivity" />
     </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".controller.RegisterActivity"
             android:label="Rat Finder"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".controller.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".controller.MainActivity" />
         </activity>
     </application>
 

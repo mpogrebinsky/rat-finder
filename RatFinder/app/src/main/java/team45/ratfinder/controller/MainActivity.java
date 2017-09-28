@@ -1,4 +1,4 @@
-package team45.ratfinder;
+package team45.ratfinder.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import team45.ratfinder.model.*;
+
+import team45.ratfinder.R;
 
 public class MainActivity extends AppCompatActivity {
     private static EditText username;
@@ -28,12 +31,15 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
 
+        final Model model = Model.getInstance();
+
         errorMessage.setVisibility(View.INVISIBLE);
         loginButton = (Button) findViewById(R.id.submit_id);
         registerButton = (Button) findViewById(R.id.cancel);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {
+
+                if (model.loginUser(username.getText().toString(), password.getText().toString())) {
                     Intent intent = new Intent(MainActivity.this, StartActivity.class);
                     startActivity(intent);
                 } else {

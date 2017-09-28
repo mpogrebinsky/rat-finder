@@ -1,12 +1,13 @@
-package team45.ratfinder;
+package team45.ratfinder.controller;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import team45.ratfinder.R;
 
 /**
  * Created by janettanzy on 9/21/17.
