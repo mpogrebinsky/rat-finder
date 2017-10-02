@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static Button cancelButton;
     private static EditText username;
     private static EditText password;
-    private static CheckBox accountlocked;
+    private static CheckBox adminCheckBox;
     private static Button submitButton;
     private static TextView errorMessage;
 
@@ -38,12 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        cancelButton = (Button) findViewById(R.id.cancel);
+        cancelButton = (Button) findViewById(R.id.register);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         submitButton = (Button) findViewById(R.id.submit_id);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
-        accountlocked = (CheckBox) findViewById(R.id.admincheckBox);
+        adminCheckBox = (CheckBox) findViewById(R.id.admincheckBox);
 
         final Model model = Model.getInstance();
 
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (accountlocked.isChecked()) {
+                if (adminCheckBox.isChecked()) {
                     newUser = new Admin(username.getText().toString(), password.getText().toString());
                 } else {
                     newUser = new User(username.getText().toString(), password.getText().toString());
