@@ -11,8 +11,8 @@ public class User {
     private Boolean accountLocked;
 
     /**
-     * This is the constructor for the normal User of Rat Finder.  The email serves as contact
-     * information and as the username.
+     * This is the constructor for a User of Rat Finder.  The username has to be an email and will
+     * serve as the user's contact information.
      * @param username
      * @param password
      */

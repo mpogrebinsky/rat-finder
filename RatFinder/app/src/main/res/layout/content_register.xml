@@ -69,6 +69,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="325dp"
+        android:layout_height="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="0dp"
+        android:text="Info not valid. User could not be registered."
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
     <CheckBox
         android:id="@+id/admincheckBox"
         android:layout_width="wrap_content"

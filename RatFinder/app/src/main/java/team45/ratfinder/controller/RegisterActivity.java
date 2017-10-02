@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import team45.ratfinder.model.Admin;
 import team45.ratfinder.model.Model;
 import team45.ratfinder.R;
 import team45.ratfinder.model.User;
@@ -40,8 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         submitButton = (Button) findViewById(R.id.submit_id);
-        //errorMessage = (TextView) findViewById(...);
-        //accountlocked = (CheckBox) findViewById(...);
+        errorMessage = (TextView) findViewById(R.id.errorMessage);
+        accountlocked = (CheckBox) findViewById(R.id.admincheckBox);
 
         final Model model = Model.getInstance();
 
@@ -54,14 +56,17 @@ public class RegisterActivity extends AppCompatActivity {
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                newUser = new User(username.getText().toString(), password.getText().toString());
+                if (accountlocked.isChecked()) {
+                    newUser = new Admin(username.getText().toString(), password.getText().toString());
+                } else {
+                    newUser = new User(username.getText().toString(), password.getText().toString());
+                }
                 if (model.addUser(newUser)) {
                     Intent intent = new Intent(RegisterActivity.this, StartActivity.class);
                     startActivity(intent);
-                } //else {
-
-                    //errorMessage.setVisibility(View.VISIBLE);
-                //}
+                } else {
+                    errorMessage.setVisibility(View.VISIBLE);
+                }
             }
         });
 
