@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/register"
         android:layout_width="164dp"
         android:layout_height="43dp"
         android:layout_marginTop="14dp"
@@ -63,7 +63,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
-        android:text="Username"
+        android:text="Email"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,13 +80,4 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/cancel"
-        android:layout_width="85dp"
-        android:layout_height="47dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="15dp"
-        android:text="Cancel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submit_id" />
 </android.support.constraint.ConstraintLayout>

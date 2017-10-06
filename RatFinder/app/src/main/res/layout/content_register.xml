@@ -9,14 +9,14 @@
     tools:showIn="@layout/activity_register">
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/register"
         android:layout_width="164dp"
         android:layout_height="43dp"
         android:layout_marginLeft="16dp"
         android:text="Cancel"
         android:textColor="@color/colorAccent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="69dp"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
@@ -26,8 +26,8 @@
         android:layout_height="43dp"
         android:layout_marginLeft="0dp"
         android:text="Submit"
-        app:layout_constraintLeft_toRightOf="@+id/cancel"
-        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/register"
+        android:layout_marginTop="69dp"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
@@ -48,11 +48,11 @@
         android:layout_width="329dp"
         android:layout_height="45dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="69dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
-        android:text="Username"
+        android:text="Email"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Administrator"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="137dp"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent" />

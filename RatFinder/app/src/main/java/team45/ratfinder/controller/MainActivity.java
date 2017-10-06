@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         errorMessage.setVisibility(View.INVISIBLE);
         loginButton = (Button) findViewById(R.id.submit_id);
-        registerButton = (Button) findViewById(R.id.cancel);
+        registerButton = (Button) findViewById(R.id.register);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
