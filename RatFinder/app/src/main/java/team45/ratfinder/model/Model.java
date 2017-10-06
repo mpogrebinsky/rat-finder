@@ -1,6 +1,22 @@
 package team45.ratfinder.model;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import team45.ratfinder.R;
+import team45.ratfinder.controller.MainActivity;
 
 /**
  * Created by laurenyapp on 9/28/17.
@@ -59,4 +75,5 @@ public class Model {
     public HashMap<String, User> getRegisteredUsers() {
         return registeredUsers;
     }
+
 }
