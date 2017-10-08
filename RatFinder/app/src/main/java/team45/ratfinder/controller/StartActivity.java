@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import team45.ratfinder.R;
 import team45.ratfinder.model.Model;
@@ -28,6 +38,10 @@ import team45.ratfinder.model.RatSighting;
 public class StartActivity extends AppCompatActivity{
 
     ArrayList<RatSighting> sightingsList;
+    DatabaseReference mDatabase;
+    DatabaseReference sightingsListReference;
+    private SimpleRatSightingRecyclerViewAdapter ratSightingRecyclerViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +51,59 @@ public class StartActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         sightingsList = new ArrayList<>();
-        sightingsList.add(new RatSighting(123, "createdDate", "locationType", 1234,
-        "address", "city", "borough", 1234.56,
-        123456.78));
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+       /* DatabaseReference testReference = mDatabase.child("991");
+        testReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("Firebase", dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
+        sightingsListReference = mDatabase.child("rat-sighting-list");
+        Query sightingsListQuery = sightingsListReference.orderByChild("Latitude").limitToFirst(50);
+        sightingsListQuery.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.d("Firebase", dataSnapshot.getValue().toString());
+                RatSighting ratSighting = FirebaseObjectConverter
+                        .getRatSighting((Map)dataSnapshot.getValue(), dataSnapshot.getKey());
+                sightingsList.add(ratSighting);
+                ratSightingRecyclerViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sightings_list);
 
         Model model = Model.getInstance();
-        recyclerView.setAdapter(new SimpleRatSightingRecyclerViewAdapter(sightingsList));
+        ratSightingRecyclerViewAdapter = new SimpleRatSightingRecyclerViewAdapter(sightingsList);
+        recyclerView.setAdapter(ratSightingRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
 
