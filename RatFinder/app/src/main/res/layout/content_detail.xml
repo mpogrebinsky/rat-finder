@@ -79,78 +79,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="200dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/incidentZip" />
 
     <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Brooklyn"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="227dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
     <TextView
         android:id="@+id/boroughTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Borough"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="260dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <TextView
         android:id="@+id/borough"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Brooklyn"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="287dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/boroughTextView" />
 
     <TextView
         android:id="@+id/locationTypeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location Type"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/borough" />
 
     <TextView
         android:id="@+id/locationType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apartment"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="343dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/locationTypeTextView" />
 
     <TextView
         android:id="@+id/doordinatesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coordinates"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="372dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/locationType" />
 
     <TextView
         android:id="@+id/coordinates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="lat/long"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="398dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/doordinatesTextView" />
 
     <TextView
         android:id="@+id/uniqueKeyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Unique Key"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="428dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/coordinates" />
 
     <TextView
         android:id="@+id/uniqueKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="unique key"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="455dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/uniqueKeyTextView" />
 </android.support.constraint.ConstraintLayout>
