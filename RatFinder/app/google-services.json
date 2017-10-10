@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "163760963375",
+    "firebase_url": "https://ratfinder-9d398.firebaseio.com",
+    "project_id": "ratfinder-9d398",
+    "storage_bucket": "ratfinder-9d398.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163760963375:android:827620846f43876d",
+        "android_client_info": {
+          "package_name": "team45.ratfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163760963375-s10mfmidlcstkbajpprgoh5b342t5vmh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "team45.ratfinder",
+            "certificate_hash": "f275a11f14d49964a2ec0e770588d3a0633c8751"
+          }
+        },
+        {
+          "client_id": "163760963375-l0vnp9ka4c21o23upkfeab26cf1e0k08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJOphMOgQRdOCcc7WdSdMeHF1wOERWJOA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163760963375-l0vnp9ka4c21o23upkfeab26cf1e0k08.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

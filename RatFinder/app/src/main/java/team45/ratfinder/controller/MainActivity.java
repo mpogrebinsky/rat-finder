@@ -13,11 +13,11 @@ import team45.ratfinder.model.*;
 import team45.ratfinder.R;
 
 public class MainActivity extends AppCompatActivity {
-    private static EditText username;
-    private static EditText password;
-    private static TextView errorMessage;
-    private static Button loginButton;
-    private static Button registerButton;
+    private EditText username;
+    private EditText password;
+    private TextView errorMessage;
+    private Button loginButton;
+    private Button registerButton;
 
 
     @Override

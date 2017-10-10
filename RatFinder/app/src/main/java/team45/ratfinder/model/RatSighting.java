@@ -6,7 +6,7 @@ package team45.ratfinder.model;
 
 public class RatSighting {
 
-    private int uniqueKey;
+    private String uniqueKey;
     private String createdDate;
     private String locationType;
     private int incidentZip;
@@ -16,7 +16,7 @@ public class RatSighting {
     private double latitude;
     private double longitude;
 
-    public RatSighting(int uniqueKey, String createdDate, String locationType, int incidentZip,
+    public RatSighting(String uniqueKey, String createdDate, String locationType, int incidentZip,
                        String incidentAddress, String city, String borough, double latitude,
                        double longitude) {
         this.uniqueKey = uniqueKey;
@@ -30,7 +30,7 @@ public class RatSighting {
         this.longitude = longitude;
     }
 
-    public int getUniqueKey() {
+    public String getUniqueKey() {
         return uniqueKey;
     }
 
