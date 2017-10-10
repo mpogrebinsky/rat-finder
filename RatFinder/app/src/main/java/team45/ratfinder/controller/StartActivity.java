@@ -66,11 +66,13 @@ public class StartActivity extends AppCompatActivity{
             }
         });*/
         sightingsListReference = mDatabase.child("rat-sighting-list");
+
+        //DO NOT DELETE THIS LINE OF CODE:
         Query sightingsListQuery = sightingsListReference.orderByChild("Latitude").limitToFirst(50);
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("Firebase", dataSnapshot.getValue().toString());
+                //Log.d("Firebase", dataSnapshot.getValue().toString());
                 RatSighting ratSighting = FirebaseObjectConverter
                         .getRatSighting((Map)dataSnapshot.getValue(), dataSnapshot.getKey());
                 sightingsList.add(ratSighting);
@@ -201,7 +203,7 @@ public class StartActivity extends AppCompatActivity{
                             pass along the id of the course so we can retrieve the correct data in
                             the next window
                          */
-                        intent.putExtra("Rat Sighting Key", holder.ratSighting.getUniqueKey());
+                        intent.putExtra("RatSighting Key", holder.ratSighting.getUniqueKey());
 
                         //model.setCurrentCourse(holder.mCourse);
 

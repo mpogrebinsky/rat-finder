@@ -21,12 +21,12 @@ import team45.ratfinder.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private static Button cancelButton;
-    private static EditText username;
-    private static EditText password;
-    private static CheckBox adminCheckBox;
-    private static Button submitButton;
-    private static TextView errorMessage;
+    private  Button cancelButton;
+    private  EditText username;
+    private  EditText password;
+    private  CheckBox adminCheckBox;
+    private  Button submitButton;
+    private  TextView errorMessage;
 
     private User newUser;
 
