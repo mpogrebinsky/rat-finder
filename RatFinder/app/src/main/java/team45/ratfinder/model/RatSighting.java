@@ -23,7 +23,7 @@ public class RatSighting {
         this.createdDate = createdDate;
         this.locationType = locationType;
         this.incidentZip = incidentZip;
-        this. incidentAddress = incidentAddress;
+        this.incidentAddress = incidentAddress;
         this.city = city;
         this.borough = borough;
         this.latitude = latitude;
