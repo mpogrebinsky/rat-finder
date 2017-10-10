@@ -67,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
                 ratSighting = FirebaseObjectConverter.getRatSighting((Map)dataSnapshot.getValue(), uniqueKeyStringExtra);
                 date.setText(ratSighting.getCreatedDate());
                 incidentAddress.setText(ratSighting.getIncidentAddress());
-                incidentZip.setText(ratSighting.getIncidentZip());
+                incidentZip.setText("" + ratSighting.getIncidentZip());
                 city.setText(ratSighting.getCity());
                 borough.setText(ratSighting.getLocationType());
                 locationType.setText(ratSighting.getLocationType());
