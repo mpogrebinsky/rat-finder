@@ -52,9 +52,9 @@ public class DetailActivity extends AppCompatActivity {
         date = (TextView) findViewById(R.id.date);
         incidentAddress = (TextView) findViewById(R.id.incidentAddress);
         incidentZip = (TextView) findViewById(R.id.incidentZip);
-        city = (TextView) findViewById(R.id.city);
-        borough = (TextView) findViewById(R.id.borough);
-        locationType = (TextView) findViewById(R.id.locationType);
+        city = (TextView) findViewById(R.id.cityTextView);
+        borough = (TextView) findViewById(R.id.boroughTextView);
+        locationType = (TextView) findViewById(R.id.locationTypeTextView);
         coordinates = (TextView) findViewById(R.id.coordinates);
         uniqueKey = (TextView) findViewById(R.id.uniqueKey);
 

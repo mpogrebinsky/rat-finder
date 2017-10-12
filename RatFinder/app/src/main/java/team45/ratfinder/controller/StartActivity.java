@@ -3,6 +3,7 @@ package team45.ratfinder.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -105,9 +107,18 @@ public class StartActivity extends AppCompatActivity{
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sightings_list);
 
         Model model = Model.getInstance();
+        FloatingActionButton addSightingButton;
         ratSightingRecyclerViewAdapter = new SimpleRatSightingRecyclerViewAdapter(sightingsList);
         recyclerView.setAdapter(ratSightingRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        addSightingButton = (FloatingActionButton) findViewById(R.id.addSighting);
+
+        addSightingButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, InputSightingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
