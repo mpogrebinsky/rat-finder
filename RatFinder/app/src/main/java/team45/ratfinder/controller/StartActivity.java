@@ -68,6 +68,8 @@ public class StartActivity extends AppCompatActivity{
         sightingsListReference = mDatabase.child("rat-sighting-list");
 
         //DO NOT DELETE THIS LINE OF CODE:
+        //This query will find the first 50 rat sightings and the recycler view will be filled with
+        //these. Later, there will be queries based on location, date, etc.
         Query sightingsListQuery = sightingsListReference.orderByChild("Latitude").limitToFirst(50);
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
@@ -112,19 +114,13 @@ public class StartActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.on_logout) {
             Intent intent = new Intent(StartActivity.this, MainActivity.class);
             startActivity(intent);
@@ -137,16 +133,16 @@ public class StartActivity extends AppCompatActivity{
 
 
     /**
-     * This inner class is our custom adapter.  It takes our basic model information and
-     * converts it to the correct layout for this view.
+     * This inner class is our custom recycler view adapter.  It takes our rat sighting information
+     * and converts it to the correct layout for this view. The created date and unique key will
+     * be the information needed for the recycler view.
      *
-     * In this case, we are just mapping the toString of the Course object to a text field.
      */
     public class SimpleRatSightingRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleRatSightingRecyclerViewAdapter.ViewHolder> {
 
         /**
-         * Collection of the items to be shown in this list.
+         * Our list of rat sightings from the database
          */
         private final List<RatSighting> ratSightings;
 
@@ -163,8 +159,7 @@ public class StartActivity extends AppCompatActivity{
             /*
 
               This sets up the view for each individual item in the recycler display
-              To edit the actual layout, we would look at: res/layout/course_list_content.xml
-              If you look at the example file, you will see it currently just 2 TextView elements
+
              */
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.sightings_list_content, parent, false);
@@ -175,39 +170,21 @@ public class StartActivity extends AppCompatActivity{
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
             final Model model = Model.getInstance();
-            /*
-            This is where we have to bind each data element in the list (given by position parameter)
-            to an element in the view (which is one of our two TextView widgets
-             */
-            //start by getting the element at the correct position
             holder.ratSighting = ratSightings.get(position);
-            /*
-              Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
-              textview and the string rep of a course in the other.
-             */
             holder.sightingIdView.setText("" + ratSightings.get(position).getUniqueKey());
             holder.sightingDate.setText(ratSightings.get(position).getCreatedDate());
 
-            /*
-             * set up a listener to handle if the user clicks on this list item, what should happen?
-             */
+
             holder.listItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                        //on a phone, we need to change windows to the detail view
                         Context context = v.getContext();
-                        //create our new intent with the new screen (activity)
                         Intent intent = new Intent(context, DetailActivity.class);
-                        /*
-                            pass along the id of the course so we can retrieve the correct data in
-                            the next window
-                         */
                         intent.putExtra("RatSighting Key", holder.ratSighting.getUniqueKey());
 
                         //model.setCurrentCourse(holder.mCourse);
 
-                        //now just display the new window
                         context.startActivity(intent);
                 }
             });
@@ -220,8 +197,8 @@ public class StartActivity extends AppCompatActivity{
 
         /**
          * This inner class represents a ViewHolder which provides us a way to cache information
-         * about the binding between the model element (in this case a Course) and the widgets in
-         * the list view (in this case the two TextView)
+         * about the binding between the rat sightings and the 2 information holders presented
+         * in the view
          */
 
         public class ViewHolder extends RecyclerView.ViewHolder {
