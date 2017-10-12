@@ -69,9 +69,10 @@ public class DetailActivity extends AppCompatActivity {
                 incidentAddress.setText(ratSighting.getIncidentAddress());
                 incidentZip.setText("" + ratSighting.getIncidentZip());
                 city.setText(ratSighting.getCity());
-                borough.setText(ratSighting.getLocationType());
+                borough.setText(ratSighting.getBorough());
                 locationType.setText(ratSighting.getLocationType());
                 coordinates.setText("(" + ratSighting.getLatitude() + ", " + ratSighting.getLongitude() + ")");
+                uniqueKey.setText(uniqueKeyStringExtra);
             }
 
             @Override
