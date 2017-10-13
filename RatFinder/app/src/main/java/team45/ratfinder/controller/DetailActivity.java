@@ -26,6 +26,7 @@ import team45.ratfinder.model.RatSighting;
 
 public class DetailActivity extends AppCompatActivity {
 
+
     private RatSighting ratSighting;
     private DatabaseReference ratSightingReference;
 
