@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("Firebase", dataSnapshot.getValue().toString());
                 ratSighting = FirebaseObjectConverter.getRatSighting((Map)dataSnapshot.getValue(), uniqueKeyStringExtra);
-                date.setText(ratSighting.getCreatedDate());
+                date.setText(ratSighting.getCreatedDateString());
                 incidentAddress.setText(ratSighting.getIncidentAddress());
                 incidentZip.setText("" + ratSighting.getIncidentZip());
                 city.setText(ratSighting.getCity());

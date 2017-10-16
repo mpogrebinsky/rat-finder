@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -23,7 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,14 +70,14 @@ public class StartActivity extends AppCompatActivity{
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the first 50 rat sightings and the recycler view will be filled with
         //these. Later, there will be queries based on location, date, etc.
-        Query sightingsListQuery = sightingsListReference.orderByChild("Latitude").limitToFirst(50);
+        Query sightingsListQuery = sightingsListReference.orderByChild("Created Date").limitToLast(30); //currently sorting by date
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //Log.d("Firebase", dataSnapshot.getValue().toString());
+                Log.d("Firebase", dataSnapshot.getValue().toString());
                 RatSighting ratSighting = FirebaseObjectConverter
                         .getRatSighting((Map)dataSnapshot.getValue(), dataSnapshot.getKey());
-                sightingsList.add(ratSighting);
+                sightingsList.add(0, ratSighting);
                 ratSightingRecyclerViewAdapter.notifyDataSetChanged();
             }
 
@@ -108,6 +106,7 @@ public class StartActivity extends AppCompatActivity{
 
         Model model = Model.getInstance();
         FloatingActionButton addSightingButton;
+       // Collections.reverse(sightingsList);
         ratSightingRecyclerViewAdapter = new SimpleRatSightingRecyclerViewAdapter(sightingsList);
         recyclerView.setAdapter(ratSightingRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -183,7 +182,7 @@ public class StartActivity extends AppCompatActivity{
             final Model model = Model.getInstance();
             holder.ratSighting = ratSightings.get(position);
             holder.sightingIdView.setText("" + ratSightings.get(position).getUniqueKey());
-            holder.sightingDate.setText(ratSightings.get(position).getCreatedDate());
+            holder.sightingDate.setText(ratSightings.get(position).getCreatedDateString());
 
 
             holder.listItemView.setOnClickListener(new View.OnClickListener() {

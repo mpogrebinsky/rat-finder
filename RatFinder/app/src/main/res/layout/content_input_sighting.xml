@@ -189,7 +189,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/cancelsight_id"
         android:layout_width="164dp"
         android:layout_height="43dp"
         android:layout_marginLeft="16dp"

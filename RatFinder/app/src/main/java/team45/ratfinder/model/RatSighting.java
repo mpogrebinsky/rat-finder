@@ -1,5 +1,7 @@
 package team45.ratfinder.model;
 
+import java.util.Date;
+
 /**
  * Created by laurenyapp on 10/5/17.
  */
@@ -7,7 +9,7 @@ package team45.ratfinder.model;
 public class RatSighting {
 
     private String uniqueKey;
-    private String createdDate;
+    private long createdDate;
     private String locationType;
     private int incidentZip;
     private String incidentAddress;
@@ -28,7 +30,7 @@ public class RatSighting {
      * @param latitude the latitude associated with the sighting
      * @param longitude the longitude associated with the sighting
      */
-    public RatSighting(String uniqueKey, String createdDate, String locationType, int incidentZip,
+    public RatSighting(String uniqueKey, long createdDate, String locationType, int incidentZip,
                        String incidentAddress, String city, String borough, double latitude,
                        double longitude) {
         this.uniqueKey = uniqueKey;
@@ -46,8 +48,11 @@ public class RatSighting {
         return uniqueKey;
     }
 
-    public String getCreatedDate() {
+    public long getCreatedDate() {
         return createdDate;
+    }
+    public String getCreatedDateString() {
+        return new Date(createdDate).toString();
     }
 
     public String getLocationType() {
