@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,10 +36,11 @@ import team45.ratfinder.model.RatSighting;
 
 public class StartActivity extends AppCompatActivity{
 
-    ArrayList<RatSighting> sightingsList;
+    LinkedList<RatSighting> sightingsList;
     DatabaseReference mDatabase;
     DatabaseReference sightingsListReference;
     private SimpleRatSightingRecyclerViewAdapter ratSightingRecyclerViewAdapter;
+    private String sortBy = "Created Date";
 
 
     @Override
@@ -50,7 +50,7 @@ public class StartActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-        sightingsList = new ArrayList<>();
+        sightingsList = new LinkedList<RatSighting>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
        /* DatabaseReference testReference = mDatabase.child("991");
@@ -70,15 +70,26 @@ public class StartActivity extends AppCompatActivity{
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the first 50 rat sightings and the recycler view will be filled with
         //these. Later, there will be queries based on location, date, etc.
-        Query sightingsListQuery = sightingsListReference.orderByChild("Created Date").limitToLast(30); //currently sorting by date
+        Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("Firebase", dataSnapshot.getValue().toString());
+                //Log.d("Firebase", dataSnapshot.getValue().toString());
                 RatSighting ratSighting = FirebaseObjectConverter
                         .getRatSighting((Map)dataSnapshot.getValue(), dataSnapshot.getKey());
-                sightingsList.add(0, ratSighting);
+                sightingsList.addFirst(ratSighting);
                 ratSightingRecyclerViewAdapter.notifyDataSetChanged();
+
+                /*current indexing rules on firebase("must be updated for performance reasons everytime csv data is rearranged"
+                "rules": {
+    "rat-sighting-list": {
+      ".indexOn": ["Created Date","Latitude", "Longitude", "Incident Zip", "Incident Address", "City", "Borough", "Location Type"],
+    ".read": true,
+    ".write": true
+    }
+  }
+                 */
+
             }
 
             @Override
