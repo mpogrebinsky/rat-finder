@@ -33,8 +33,8 @@ public int test;
         data.put(("Incident Address"), sighting.getIncidentAddress());
         data.put(("City"), sighting.getCity());
         data.put(("Borough"), sighting.getBorough());
-        data.put(("Latitude"), (Double) sighting.getLatitude());
-        data.put(("Longitude"), (Double) sighting.getLongitude());
+        data.put(("Latitude"), (double) sighting.getLatitude());
+        data.put(("Longitude"), (double) sighting.getLongitude());
         return data;
 
 
