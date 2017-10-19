@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -52,7 +53,6 @@ public class StartActivity extends AppCompatActivity{
 
         sightingsList = new LinkedList<RatSighting>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
        /* DatabaseReference testReference = mDatabase.child("991");
         testReference.addValueEventListener(new ValueEventListener() {
             @Override
