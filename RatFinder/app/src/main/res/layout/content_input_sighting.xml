@@ -99,7 +99,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinate1Input" />
@@ -111,7 +111,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationTypeInput" />

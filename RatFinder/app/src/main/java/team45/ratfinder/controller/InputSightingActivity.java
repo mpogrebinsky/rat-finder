@@ -50,15 +50,15 @@ public class InputSightingActivity extends AppCompatActivity {
 
 
             public void onClick(View v) {
-                Intent intent = new Intent(InputSightingActivity.this, MainActivity.class);
+                Intent intent = new Intent(InputSightingActivity.this, StartActivity.class);
                 startActivity(intent);
             }
         });
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(InputSightingActivity.this, MainActivity.class);
+                Intent intent = new Intent(InputSightingActivity.this, StartActivity.class);
                 startActivity(intent);
-                long time= System.currentTimeMillis();
+                long time = System.currentTimeMillis();
                 long uniqueKey = time / 100000; //temporary uniquekey generated
 
                 RatSighting temp = new RatSighting(uniqueKey+"", time, locationTypeInput.getText().toString(), Integer.parseInt(zipcodeInput.getText().toString())
