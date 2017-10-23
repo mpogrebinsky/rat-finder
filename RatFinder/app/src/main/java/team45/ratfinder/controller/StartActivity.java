@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -42,35 +48,44 @@ public class StartActivity extends AppCompatActivity{
     DatabaseReference sightingsListReference;
     private SimpleRatSightingRecyclerViewAdapter ratSightingRecyclerViewAdapter;
     private String sortBy = "Created Date";
-
-
+    private Button editDate;
+    private EditText startDate;
+    private EditText endDate;
+    private Query sightingsListQuery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
-
+        editDate = (Button) findViewById(R.id.editDate);
+        startDate = (EditText) findViewById(R.id.startDate);
+        endDate = (EditText) findViewById(R.id.endDate);
         sightingsList = new LinkedList<RatSighting>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-       /* DatabaseReference testReference = mDatabase.child("991");
-        testReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("Firebase", dataSnapshot.getValue().toString());
-            }
+        editDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                DateFormat dfm = new SimpleDateFormat("MMddYYYY");
+                try {
+                    Date date1 = (Date)dfm.parse(startDate.getText().toString());
+                    Date date2 = (Date)dfm.parse(endDate.getText().toString());
+                    Log.d("test", date1.getTime()+"");
+                    sightingsListQuery = sightingsListReference.orderByChild("Created Date").startAt(date1.getTime()).endAt(date2.getTime()).limitToLast(30);
+
+                } catch(Exception e) {
+                    e.printStackTrace();
+                    Log.d("HERE", "ERROR");
+                }
 
             }
-        });*/
+        });
         sightingsListReference = mDatabase.child("rat-sighting-list");
 
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the first 50 rat sightings and the recycler view will be filled with
         //these. Later, there will be queries based on location, date, etc.
-        Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+        sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
