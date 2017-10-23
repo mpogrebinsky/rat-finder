@@ -151,8 +151,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        final long startDateLongExtra = getIntent().getLongExtra("Start Date");
-        final long endDateLongExtra = getIntent().getLongExtra("End Date");
+        //final long startDateLongExtra = getIntent().getLongExtra("Start Date");
+        //final long endDateLongExtra = getIntent().getLongExtra("End Date");
 
         //From an intent in the Map Button Click Listener in StartActivity, will take in extras that
         // will provide start and end dates
@@ -165,7 +165,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the rat sightings by date inputs in the start activity.
-        final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).startAt(startDateLongExtra).endAt(endDateLongExtra);
+        //final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).startAt(startDateLongExtra).endAt(endDateLongExtra);
+        final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -173,6 +175,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 RatSighting ratSighting = FirebaseObjectConverter
                         .getRatSighting((Map)dataSnapshot.getValue(), dataSnapshot.getKey());
                 sightingsList.addFirst(ratSighting);
+                //for (RatSighting r : sightingsList) {
+                    LatLng loc = new LatLng(ratSighting.getLatitude(), ratSighting.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(loc).title(ratSighting.getUniqueKey()).snippet(ratSighting.getIncidentAddress()));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                //}
+
+                mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
 
             }
             @Override
