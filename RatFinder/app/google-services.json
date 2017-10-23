@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "163760963375-v7c08clct74pnl4a46qpfqfk8qbcscah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "team45.ratfinder",
+            "certificate_hash": "226e84079b3e2f1b766d8f650a9be689c7f2c790"
+          }
+        },
+        {
           "client_id": "163760963375-s10mfmidlcstkbajpprgoh5b342t5vmh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

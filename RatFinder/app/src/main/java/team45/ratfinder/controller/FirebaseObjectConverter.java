@@ -40,4 +40,13 @@ public int test;
 
 
     }
+    /*static Map<String, Object> userToFireBase(User user) {
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put(("username"), user.getUsername());
+        data.put(("password"), user.getPassword().hashCode());
+        if ()
+        data.put(("admin"), );
+        return data;
+    }
+    */
 }
