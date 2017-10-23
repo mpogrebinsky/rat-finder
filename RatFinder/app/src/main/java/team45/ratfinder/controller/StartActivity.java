@@ -70,7 +70,7 @@ public class StartActivity extends AppCompatActivity{
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the first 50 rat sightings and the recycler view will be filled with
         //these. Later, there will be queries based on location, date, etc.
-        Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+        final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -117,15 +117,27 @@ public class StartActivity extends AppCompatActivity{
 
         Model model = Model.getInstance();
         FloatingActionButton addSightingButton;
+        FloatingActionButton mapButton;
        // Collections.reverse(sightingsList);
         ratSightingRecyclerViewAdapter = new SimpleRatSightingRecyclerViewAdapter(sightingsList);
         recyclerView.setAdapter(ratSightingRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         addSightingButton = (FloatingActionButton) findViewById(R.id.addSighting);
+        mapButton = (FloatingActionButton) findViewById(R.id.mapButton);
 
         addSightingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, InputSightingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, MapsActivity.class);
+
+                //intent.putExtra("Start Date", );
+                //intent.putExtra("End Date", )
                 startActivity(intent);
             }
         });
