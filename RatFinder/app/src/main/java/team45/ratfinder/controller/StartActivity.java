@@ -53,8 +53,12 @@ public class StartActivity extends AppCompatActivity{
     private Button editDate;
     private EditText startDate;
     private EditText endDate;
+<<<<<<< HEAD
 
 
+=======
+    private Query sightingsListQuery;
+>>>>>>> 24a8192441453e4020e89fbf8ee54ad6a548d5c1
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +76,7 @@ public class StartActivity extends AppCompatActivity{
         editDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+<<<<<<< HEAD
                 DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
                 try {
                     Date date1 = (Date)dfm.parse(startDate.getText().toString());
@@ -114,17 +119,36 @@ public class StartActivity extends AppCompatActivity{
                     e.printStackTrace();
                     Toast.makeText(StartActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
+=======
+                DateFormat dfm = new SimpleDateFormat("MMddYYYY");
+                try {
+                    Date date1 = (Date)dfm.parse(startDate.getText().toString());
+                    Date date2 = (Date)dfm.parse(endDate.getText().toString());
+                    Log.d("test", date1.getTime()+"");
+                    sightingsListQuery = sightingsListReference.orderByChild("Created Date").startAt(date1.getTime()).endAt(date2.getTime()).limitToLast(30);
+
+                } catch(Exception e) {
+                    e.printStackTrace();
+>>>>>>> 24a8192441453e4020e89fbf8ee54ad6a548d5c1
                     Log.d("HERE", "ERROR");
                 }
 
             }
         });
+<<<<<<< HEAD
+=======
+        sightingsListReference = mDatabase.child("rat-sighting-list");
+>>>>>>> 24a8192441453e4020e89fbf8ee54ad6a548d5c1
 
         sightingsListReference = mDatabase.child("rat-sighting-list");
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the first 50 rat sightings and the recycler view will be filled with
         //these. Later, there will be queries based on location, date, etc.
+<<<<<<< HEAD
         final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+=======
+        sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+>>>>>>> 24a8192441453e4020e89fbf8ee54ad6a548d5c1
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
