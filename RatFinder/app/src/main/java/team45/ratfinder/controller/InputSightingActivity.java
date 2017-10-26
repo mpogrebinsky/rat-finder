@@ -24,7 +24,7 @@ public class InputSightingActivity extends AppCompatActivity {
 
     private Button submitButton;
     private  Button cancelButton;
-    private EditText dateInput, addressInput, zipcodeInput, cityInput, locationTypeInput, boroughInput, coordinate1Input, coordinate2Input;
+    private EditText addressInput, zipcodeInput, cityInput, locationTypeInput, boroughInput, coordinate1Input, coordinate2Input;
     DatabaseReference mDatabase;
     DatabaseReference sightingsListReference;
 
@@ -35,7 +35,6 @@ public class InputSightingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         cancelButton = (Button) findViewById(R.id.cancelsight_id);
         submitButton = (Button) findViewById(R.id.submit_id);
-        dateInput = (EditText) findViewById(R.id.dateInput);
         addressInput = (EditText) findViewById(R.id.addressInput);
         zipcodeInput = (EditText) findViewById(R.id.zipcodeInput);
         cityInput = (EditText) findViewById(R.id.cityInput);
