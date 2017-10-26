@@ -162,16 +162,25 @@ public class StartActivity extends AppCompatActivity{
         Model model = Model.getInstance();
         FloatingActionButton addSightingButton;
         FloatingActionButton mapButton;
+        FloatingActionButton graphButton;
         // Collections.reverse(sightingsList);
         ratSightingRecyclerViewAdapter = new SimpleRatSightingRecyclerViewAdapter(sightingsList);
         recyclerView.setAdapter(ratSightingRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         addSightingButton = (FloatingActionButton) findViewById(R.id.addSighting);
         mapButton = (FloatingActionButton) findViewById(R.id.mapButton);
+        graphButton = (FloatingActionButton) findViewById(R.id.graphButton);
 
         addSightingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, InputSightingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, GraphActivity.class);
                 startActivity(intent);
             }
         });

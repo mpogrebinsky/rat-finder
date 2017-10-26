@@ -58,6 +58,15 @@
                 android:value=".controller.StartActivity" />
         </activity>
         <activity
+            android:name=".controller.GraphActivity"
+            android:label="Sightings Graph"
+            android:parentActivityName=".controller.StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controller.StartActivity" />
+        </activity>
+        <activity
             android:name=".controller.DetailActivity"
             android:label="Detail Sighting"
             android:parentActivityName=".controller.StartActivity"

@@ -8,17 +8,16 @@
     tools:context="team45.ratfinder.controller.StartActivity"
     tools:showIn="@layout/activity_start">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/mapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_dialog_map"
-        android:layout_marginLeft="16dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sightings_list"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="455dp" />
+        tools:listitem="@layout/sightings_list_content" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addSighting"
@@ -32,16 +31,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/sightings_list"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="55dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="455dp"
+        android:clickable="true"
+        app:fabSize="mini"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/sightings_list_content" />
+        app:srcCompat="@android:drawable/ic_dialog_map" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/graphButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="455dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@+id/mapButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
     <Button
         android:id="@+id/editDate"
