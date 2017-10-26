@@ -48,12 +48,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 }*/
             package team45.ratfinder.controller;
 
-import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
-import team45.ratfinder.R;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -61,23 +60,21 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
-/**import demo.cs2340.gatech.edu.mapdemo.R;
-import demo.cs2340.gatech.edu.mapdemo.model.Location;
-import demo.cs2340.gatech.edu.mapdemo.model.ModelFacade;
-import demo.cs2340.gatech.edu.mapdemo.model.Report;*/
-import team45.ratfinder.model.*;
+import team45.ratfinder.R;
+import team45.ratfinder.model.Model;
+import team45.ratfinder.model.RatSighting;
+
+/**
+ * import demo.cs2340.gatech.edu.mapdemo.R;
+ * import demo.cs2340.gatech.edu.mapdemo.model.Location;
+ * import demo.cs2340.gatech.edu.mapdemo.model.ModelFacade;
+ * import demo.cs2340.gatech.edu.mapdemo.model.Report;
+ */
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -98,6 +95,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         mFacade = Model.getInstance();
+        Bundle bdl = getIntent().getExtras();
+        ArrayList<RatSighting> test = bdl.getParcelableArrayList("Data");
+        this.sightingsList = new LinkedList<>(test);
+        //Log.d("test", test.get(0).getLatitude()+"");
 
     }
 
@@ -146,9 +147,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(markerOptions);
             }
         });*/
+        for (RatSighting a: sightingsList) {
+            LatLng loc = new LatLng(a.getLatitude(), a.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(loc).title(a.getUniqueKey()).snippet(a.getIncidentAddress()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        }
 
-
-
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
 
 
         //final long startDateLongExtra = getIntent().getLongExtra("Start Date");
@@ -159,14 +164,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //will run a query with start/end dates to make LinkedList of RatSightings
 
 
-        sightingsList = new LinkedList<RatSighting>();
+        /*sightingsList = new LinkedList<RatSighting>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         sightingsListReference = mDatabase.child("rat-sighting-list");
 
         //DO NOT DELETE THIS LINE OF CODE:
         //This query will find the rat sightings by date inputs in the start activity.
-        //final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).startAt(startDateLongExtra).endAt(endDateLongExtra);
-        final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
+        final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).startAt(startDateLongExtra).endAt(endDateLongExtra);
+       final Query sightingsListQuery = sightingsListReference.orderByChild(sortBy).limitToLast(30); //currently sorting by date
 
         sightingsListQuery.addChildEventListener(new ChildEventListener() {
             @Override
@@ -212,6 +217,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+        */
     }
 
     class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {

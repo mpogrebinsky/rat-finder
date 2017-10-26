@@ -29,6 +29,7 @@ import com.google.firebase.database.Query;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -178,7 +179,9 @@ public class StartActivity extends AppCompatActivity{
         mapButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, MapsActivity.class);
-
+                Bundle bundle = new Bundle();
+                ArrayList<RatSighting> locs = new ArrayList<>(sightingsList);
+                intent.putParcelableArrayListExtra("Data", locs);
                 //intent.putExtra("Start Date", );
                 //intent.putExtra("End Date", )
                 startActivity(intent);
