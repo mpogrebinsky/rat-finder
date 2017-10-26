@@ -1,12 +1,15 @@
 package team45.ratfinder.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by laurenyapp on 10/5/17.
  */
 
-public class RatSighting {
+public class RatSighting implements Parcelable{
 
     private String uniqueKey;
     private long createdDate;
@@ -87,4 +90,26 @@ public class RatSighting {
         return uniqueKey + "";
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(uniqueKey);
+        parcel.writeString(incidentAddress);
+        parcel.writeDouble(latitude);
+        parcel.writeDouble(longitude);
+    }
+    public static final Parcelable.Creator<RatSighting> CREATOR
+            = new Parcelable.Creator<RatSighting>() {
+        public RatSighting createFromParcel(Parcel in) {
+            return new RatSighting(in.readString(),0,"",0,in.readString(),"","",in.readDouble(), in.readDouble());
+        }
+
+        public RatSighting[] newArray(int size) {
+            return new RatSighting[size];
+        }
+    };
 }
