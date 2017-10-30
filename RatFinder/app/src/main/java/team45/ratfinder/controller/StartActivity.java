@@ -181,6 +181,9 @@ public class StartActivity extends AppCompatActivity{
         graphButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, GraphActivity.class);
+                Bundle bundle = new Bundle();
+                ArrayList<RatSighting> locs = new ArrayList<>(sightingsList);
+                intent.putParcelableArrayListExtra("Data", locs);
                 startActivity(intent);
             }
         });

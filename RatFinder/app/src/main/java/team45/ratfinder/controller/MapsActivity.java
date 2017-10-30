@@ -80,10 +80,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Model mFacade;
-    LinkedList<RatSighting> sightingsList;
-    DatabaseReference mDatabase;
-    DatabaseReference sightingsListReference;
-    private String sortBy = "Created Date";
+    private LinkedList<RatSighting> sightingsList;
+    //private DatabaseReference mDatabase;
+    //private DatabaseReference sightingsListReference;
+    //private String sortBy = "Created Date";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
