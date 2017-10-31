@@ -78,7 +78,7 @@ public class StartActivity extends AppCompatActivity{
                     Date date1 = (Date)dfm.parse(startDate.getText().toString());
                     Date date2 = (Date)dfm.parse(endDate.getText().toString());
                     Log.d("test", date1.toString()+startDate.getText().toString());
-                    Query sightingsListInterval = sightingsListReference.orderByChild("Created Date").startAt(date1.getTime()).endAt(date2.getTime()).limitToLast(30);
+                    Query sightingsListInterval = sightingsListReference.orderByChild("Created Date").startAt(date1.getTime()).endAt(date2.getTime()).limitToLast(1480);
                     sightingsList.clear();
                     sightingsListInterval.addChildEventListener(new ChildEventListener() {
                         @Override

@@ -98,6 +98,7 @@ public class RatSighting implements Parcelable{
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(uniqueKey);
+        parcel.writeLong(createdDate);
         parcel.writeString(incidentAddress);
         parcel.writeDouble(latitude);
         parcel.writeDouble(longitude);
@@ -105,7 +106,7 @@ public class RatSighting implements Parcelable{
     public static final Parcelable.Creator<RatSighting> CREATOR
             = new Parcelable.Creator<RatSighting>() {
         public RatSighting createFromParcel(Parcel in) {
-            return new RatSighting(in.readString(),0,"",0,in.readString(),"","",in.readDouble(), in.readDouble());
+            return new RatSighting(in.readString(),in.readLong(),"",0,in.readString(),"","",in.readDouble(), in.readDouble());
         }
 
         public RatSighting[] newArray(int size) {
