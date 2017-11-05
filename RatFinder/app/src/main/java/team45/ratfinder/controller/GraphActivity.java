@@ -16,6 +16,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -23,8 +25,6 @@ import java.util.Map;
 
 import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
-
-import static android.R.attr.format;
 
 
 /**
@@ -48,26 +48,32 @@ public class GraphActivity extends AppCompatActivity {
         Bundle bdl = getIntent().getExtras();
         ArrayList<RatSighting> ratList = bdl.getParcelableArrayList("Data");
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MM");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/01/YYYY");
         String d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
         String d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
 
-        HashMap<Integer, Integer> ratMap = monthCounter(ratList);
+        HashMap<String, Integer> ratMap = monthCounter(ratList);
         DataPoint[] dataPoints = new DataPoint[ratMap.size()];
         int i = 0;
-        for (Map.Entry<Integer, Integer> entry : ratMap.entrySet()) {
-            DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        for (Map.Entry<String, Integer> entry : ratMap.entrySet()) {
+            DateFormat dfm = new SimpleDateFormat("MM/01/yyyy", Locale.US);
 
             try {
-                Date d = dfm.parse(entry.getKey()+"/01/2000");
-                Log.d("test", d.toString()+"");
-                dataPoints[i++] = new DataPoint(d.getTime(), entry.getValue());
+                Date d = dfm.parse(entry.getKey()+"");
+               Log.d("test", d.toString()+", " + entry.toString());
+                //Log.d("HERE", new DataPoint(d, entry.getValue()).toString()+"");//300*(2-i)+100
+                dataPoints[i++] = new DataPoint(d.getTime(),entry.getValue() );
             }catch(Exception e) {
                 e.printStackTrace();
             }
 
         }
-
+        Arrays.sort(dataPoints, new Comparator<DataPoint>() {
+            @Override
+            public int compare(DataPoint dataPoint, DataPoint t1) {
+                return ((Double) dataPoint.getX()).compareTo(t1.getX());
+            }
+        });
         // you can directly pass Date objects to DataPoint-Constructor
         // this will convert the Date to double via Date#getTime()
 
@@ -75,7 +81,8 @@ public class GraphActivity extends AppCompatActivity {
 
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
-
+        Log.d("test", Arrays.toString(dataPoints));
+        series.setDrawDataPoints(true);
         //GraphView graph = (GraphView) findViewById(graph);
 
 
@@ -92,14 +99,17 @@ public class GraphActivity extends AppCompatActivity {
         Log.d("D1DEBUG", new Date(ratList.get(0).getCreatedDate()).toString()+"");
         Log.d("D2DEBUG", new Date(ratList.get(ratList.size()-1).getCreatedDate()).toString()+"");
 
-        DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        DateFormat dfm = new SimpleDateFormat("MM/01/yyyy", Locale.US);
 
         try {
-            Date d = dfm.parse(d1+"/01/2000"); //need the extra date info for complete date, will have to modify this for sorting by year etc
-            Log.d("test", d.toString()+"");
+            Date d = dfm.parse(d1); //need the extra date info for complete date, will have to modify this for sorting by year etc
+            d.setMonth(d.getMonth()+0);
             graph.getViewport().setMaxX(d.getTime());
-            d = dfm.parse(d2+"/01/2000");
-            graph.getViewport().setMinX(d.getTime());
+            Date dNext = dfm.parse(d2);
+            dNext.setMonth(dNext.getMonth() -0);
+            graph.getViewport().setMinX(dNext.getTime());
+            graph.getViewport().setMinY(Math.min(ratMap.get(d1), ratMap.get(d2))-50);
+            graph.getViewport().setMaxY(Math.max(ratMap.get(d2), ratMap.get(d1))+50);
 
         }catch(Exception e) {
             e.printStackTrace();
@@ -107,6 +117,7 @@ public class GraphActivity extends AppCompatActivity {
 
 
         graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
 
 // as we use dates as labels, the human rounding to nice readable numbers
 // is not necessary
@@ -118,18 +129,18 @@ public class GraphActivity extends AppCompatActivity {
      * @param ratList list of all of the RatSightings from the Start Activity
      * @return a hash map with keys as the different months with the values being the # of sightings in that month
      */
-    public HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
-        HashMap<Integer, Integer> ratMap = new HashMap<>();
+    public HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+        HashMap<String, Integer> ratMap = new HashMap<>();
         for (RatSighting rat : ratList) {
             //Long month = rat.getCreatedDate();
             //parse this long for month and date - our idea was to divide the long by a number that will get you this info
             //potentially, you will need to convert the longs to dates. The LineGraphSeries might act up otherwise
 
-            SimpleDateFormat formatter = new SimpleDateFormat("MM");
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/01/yyyy");
             String d1 = formatter.format(new Date(rat.getCreatedDate()));
 
-            Integer counter = ratMap.getOrDefault(Integer.parseInt(d1), 0);
-            ratMap.put(Integer.parseInt(d1), counter + 1);
+            Integer counter = ratMap.getOrDefault(d1, 0);
+            ratMap.put(d1, counter + 1);
         }
         return ratMap;
     }
