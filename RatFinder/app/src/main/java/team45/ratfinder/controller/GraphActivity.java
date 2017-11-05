@@ -24,25 +24,24 @@ import java.util.Map;
 import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
-import static android.R.attr.format;
+
 
 
 /**
- * Created by janettanzy on 10/26/17.
+ * Graph Activity Created by janettanzy on 10/26/17.
  */
 
 public class GraphActivity extends AppCompatActivity {
 
     //private LinkedList<RatSighting> sightingsList;
 
-    private GraphView graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-        graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graph);
         setSupportActionBar(toolbar);
 
         Bundle bdl = getIntent().getExtras();
@@ -118,7 +117,7 @@ public class GraphActivity extends AppCompatActivity {
      * @param ratList list of all of the RatSightings from the Start Activity
      * @return a hash map with keys as the different months with the values being the # of sightings in that month
      */
-    public HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+    private HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
         HashMap<Integer, Integer> ratMap = new HashMap<>();
         for (RatSighting rat : ratList) {
             //Long month = rat.getCreatedDate();

@@ -6,11 +6,11 @@ import java.util.Map;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Created by Maya Pogrebinsky on 10/7/2017.
+ * Firebase Object converter class created by Maya Pogrebinsky on 10/7/2017.
  */
 
-public class FirebaseObjectConverter {
-public int test;
+class FirebaseObjectConverter {
+//public int test;
     static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
         int incidentZip = map.get("Incident Zip").toString().equals("") ? 0: ((Long) (map.get("Incident Zip"))).intValue();
         double latitude = map.get("Latitude").toString().equals("") ? 0: ((double) (map.get("Latitude")));
@@ -26,15 +26,15 @@ public int test;
                 longitude);
     }
     static Map<String, Object> sightingToFireBase(RatSighting sighting) {
-        Map<String, Object> data = new HashMap<String, Object>();
+        Map<String, Object> data = new HashMap<>();
         data.put(("Created Date"), sighting.getCreatedDate());
         data.put(("Location Type"), sighting.getLocationType());
         data.put(("Incident Zip"), sighting.getIncidentZip());
         data.put(("Incident Address"), sighting.getIncidentAddress());
         data.put(("City"), sighting.getCity());
         data.put(("Borough"), sighting.getBorough());
-        data.put(("Latitude"), (double) sighting.getLatitude());
-        data.put(("Longitude"), (double) sighting.getLongitude());
+        data.put(("Latitude"), sighting.getLatitude());
+        data.put(("Longitude"), sighting.getLongitude());
         return data;
 
 

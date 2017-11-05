@@ -17,22 +17,23 @@ import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Created by janettanzy on 10/12/17.
+ * Input Sighting Activity Created by janettanzy on 10/12/17.
  */
 
 public class InputSightingActivity extends AppCompatActivity {
 
-    private Button submitButton;
-    private  Button cancelButton;
+
     private EditText addressInput, zipcodeInput, cityInput, locationTypeInput, boroughInput, coordinate1Input, coordinate2Input;
-    DatabaseReference mDatabase;
-    DatabaseReference sightingsListReference;
+    private DatabaseReference mDatabase;
+    //DatabaseReference sightingsListReference;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_sighting);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Button submitButton;
+        Button cancelButton;
         cancelButton = (Button) findViewById(R.id.cancelsight_id);
         submitButton = (Button) findViewById(R.id.submit_id);
         addressInput = (EditText) findViewById(R.id.addressInput);

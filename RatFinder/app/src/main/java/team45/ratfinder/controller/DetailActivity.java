@@ -21,14 +21,14 @@ import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Created by janettanzy on 10/5/17.
+ * Detail Activity Created by janettanzy on 10/5/17.
  */
 
 public class DetailActivity extends AppCompatActivity {
 
 
     private RatSighting ratSighting;
-    private DatabaseReference ratSightingReference;
+
 
     private TextView date;
     private TextView incidentAddress;
@@ -50,6 +50,7 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        DatabaseReference ratSightingReference;
         date = (TextView) findViewById(R.id.date);
         incidentAddress = (TextView) findViewById(R.id.incidentAddress);
         incidentZip = (TextView) findViewById(R.id.incidentZip);
