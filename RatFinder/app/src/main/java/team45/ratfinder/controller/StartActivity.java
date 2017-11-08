@@ -1,5 +1,6 @@
 package team45.ratfinder.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -68,8 +70,18 @@ public class StartActivity extends AppCompatActivity{
 
                 DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
                 try {
-                    Date date1 = dfm.parse(startDate.getText().toString());
-                    Date date2 = dfm.parse(endDate.getText().toString());
+                    Date date1 = (Date)dfm.parse(startDate.getText().toString());
+                    Date date2 = (Date)dfm.parse(endDate.getText().toString());
+                    if (date1.after(date2)) {
+                        Toast.makeText(StartActivity.this, "start date must be before end date",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+//Hide:
+                   // imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+//Show
+                    //imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
                     Log.d("test", date1.toString()+startDate.getText().toString());
                     Query sightingsListInterval = sightingsListReference.orderByChild("Created Date").startAt(date1.getTime()).endAt(date2.getTime()).limitToLast(1480);
                     sightingsList.clear();

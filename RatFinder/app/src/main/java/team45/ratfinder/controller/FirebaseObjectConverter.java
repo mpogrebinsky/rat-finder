@@ -12,9 +12,25 @@ import team45.ratfinder.model.RatSighting;
 class FirebaseObjectConverter {
 //public int test;
     static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
-        int incidentZip = map.get("Incident Zip").toString().equals("") ? 0: ((Long) (map.get("Incident Zip"))).intValue();
-        double latitude = map.get("Latitude").toString().equals("") ? 0: ((double) (map.get("Latitude")));
-        double longitude = map.get("Longitude").toString().equals("") ? 0: ((double) (map.get("Longitude")));
+        int incidentZip = 0;
+        try {
+            incidentZip = ((Long) (Long.parseLong(map.get("Incident Zip").toString()))).intValue();
+        } catch(NumberFormatException e) {
+            incidentZip = 0;
+        }
+        double latitude = 0;
+        double longitude = 0;
+        if (map.get("Latitude") instanceof Long) {
+            latitude = map.get("Latitude").toString().equals("") ? 0: ((long) (map.get("Latitude")));
+        } else {
+            latitude = map.get("Latitude").toString().equals("") ? 0: ((double) (map.get("Latitude")));
+        }
+
+        if (map.get("Longitude") instanceof Long) {
+            longitude = map.get("Longitude").toString().equals("") ? 0: ((long) (map.get("Longitude")));
+        } else {
+            longitude = map.get("Longitude").toString().equals("") ? 0: ((double) (map.get("Longitude")));
+        }
         return new RatSighting(uniqueKey,
                 (long) map.get("Created Date"),
                 (String) map.get("Location Type"),
