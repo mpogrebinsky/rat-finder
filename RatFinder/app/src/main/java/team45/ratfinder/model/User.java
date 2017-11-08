@@ -1,7 +1,7 @@
 package team45.ratfinder.model;
 
 /**
- * User Class Created by laurenyapp on 9/28/17.
+ * User Class Created by Lauren on 9/28/17.
  */
 
 public class User {

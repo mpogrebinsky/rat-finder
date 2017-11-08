@@ -26,7 +26,7 @@ import team45.ratfinder.model.Admin;
 import team45.ratfinder.model.User;
 
 /**
- * Register Activity Created by janettanzy on 9/27/17.
+ * Register Activity Created by Janet on 9/27/17.
  */
 
 public class RegisterActivity extends AppCompatActivity {

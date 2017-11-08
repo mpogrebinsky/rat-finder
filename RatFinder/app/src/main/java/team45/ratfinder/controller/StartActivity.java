@@ -39,7 +39,7 @@ import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Start Activity Created by janettanzy on 9/21/17.
+ * Start Activity Created by Janet on 9/21/17.
  */
 
 public class StartActivity extends AppCompatActivity{
@@ -70,8 +70,8 @@ public class StartActivity extends AppCompatActivity{
 
                 DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
                 try {
-                    Date date1 = (Date)dfm.parse(startDate.getText().toString());
-                    Date date2 = (Date)dfm.parse(endDate.getText().toString());
+                    Date date1 = dfm.parse(startDate.getText().toString());
+                    Date date2 = dfm.parse(endDate.getText().toString());
                     if (date1.after(date2)) {
                         Toast.makeText(StartActivity.this, "start date must be before end date",
                                 Toast.LENGTH_SHORT).show();
@@ -182,8 +182,8 @@ public class StartActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, GraphActivity.class);
                 //Bundle bundle = new Bundle();
-                ArrayList<RatSighting> locs = new ArrayList<>(sightingsList);
-                intent.putParcelableArrayListExtra("Data", locs);
+                ArrayList<RatSighting> locations = new ArrayList<>(sightingsList);
+                intent.putParcelableArrayListExtra("Data", locations);
                 startActivity(intent);
             }
         });
@@ -192,8 +192,8 @@ public class StartActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, MapsActivity.class);
                 //Bundle bundle = new Bundle();
-                ArrayList<RatSighting> locs = new ArrayList<>(sightingsList);
-                intent.putParcelableArrayListExtra("Data", locs);
+                ArrayList<RatSighting> locations = new ArrayList<>(sightingsList);
+                intent.putParcelableArrayListExtra("Data", locations);
                 //intent.putExtra("Start Date", );
                 //intent.putExtra("End Date", )
                 startActivity(intent);

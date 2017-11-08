@@ -17,7 +17,7 @@ import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Input Sighting Activity Created by janettanzy on 10/12/17.
+ * Input Sighting Activity Created by Janet on 10/12/17.
  */
 
 public class InputSightingActivity extends AppCompatActivity {

@@ -6,20 +6,20 @@ import java.util.Map;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Firebase Object converter class created by Maya Pogrebinsky on 10/7/2017.
+ * Firebase Object converter class created by Maya on 10/7/2017.
  */
 
 class FirebaseObjectConverter {
 //public int test;
     static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
-        int incidentZip = 0;
+        int incidentZip;
         try {
             incidentZip = ((Long) (Long.parseLong(map.get("Incident Zip").toString()))).intValue();
         } catch(NumberFormatException e) {
             incidentZip = 0;
         }
-        double latitude = 0;
-        double longitude = 0;
+        double latitude;
+        double longitude;
         if (map.get("Latitude") instanceof Long) {
             latitude = map.get("Latitude").toString().equals("") ? 0: ((long) (map.get("Latitude")));
         } else {

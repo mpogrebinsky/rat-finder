@@ -1,7 +1,7 @@
 package team45.ratfinder.model;
 
 /**
- * Admin Class Created by laurenyapp on 9/28/17.
+ * Admin Class Created by Lauren on 9/28/17.
  */
 
 public class Admin extends User {

@@ -28,7 +28,7 @@ import team45.ratfinder.model.RatSighting;
 
 
 /**
- * Created by janettanzy on 10/26/17.
+ * Created by Janet on 10/26/17.
  */
 
 public class GraphActivity extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class GraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-        graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graph);
         setSupportActionBar(toolbar);
 
         Bundle bdl = getIntent().getExtras();
@@ -130,8 +130,8 @@ public class GraphActivity extends AppCompatActivity {
      */
     public HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
         HashMap<String, Integer> ratMap = new HashMap<>();
-    private HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
-        HashMap<Integer, Integer> ratMap = new HashMap<>();
+    /*private HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+        HashMap<Integer, Integer> ratMap = new HashMap<>();*/
         for (RatSighting rat : ratList) {
             //Long month = rat.getCreatedDate();
             //parse this long for month and date - our idea was to divide the long by a number that will get you this info
