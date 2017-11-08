@@ -11,7 +11,7 @@ import team45.ratfinder.model.RatSighting;
 
 public class FirebaseObjectConverter {
 public int test;
-    static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
+    public static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
         int incidentZip = 0;
         try {
             incidentZip = ((Long) (Long.parseLong(map.get("Incident Zip").toString()))).intValue();
