@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
                                     // If sign in fails, display a message to the user.
                                     Log.w("LOGIN STAT", "signInWithEmail:failure", task.getException());
                                     FirebaseException e = (FirebaseException)task.getException();
-                                    Toast.makeText(MainActivity.this, e.getMessage(),
-                                            Toast.LENGTH_SHORT).show();
-                                    errorMessage.setVisibility(View.VISIBLE);
+                                    if (e.getMessage() != null) {
+                                        Toast.makeText(MainActivity.this, e.getMessage(),
+                                                Toast.LENGTH_SHORT).show();
+                                        errorMessage.setVisibility(View.VISIBLE);
+                                    }
                                 }
                             }
                         });

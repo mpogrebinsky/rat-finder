@@ -12,14 +12,14 @@ import team45.ratfinder.model.RatSighting;
 public class FirebaseObjectConverter {
 public int test;
     public static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
-        int incidentZip = 0;
+        int incidentZip;
         try {
             incidentZip = ((Long) (Long.parseLong(map.get("Incident Zip").toString()))).intValue();
         } catch(NumberFormatException e) {
             incidentZip = 0;
         }
-        double latitude = 0;
-        double longitude = 0;
+        double latitude;
+        double longitude;
         if (map.get("Latitude") instanceof Long) {
             latitude = map.get("Latitude").toString().equals("") ? 0: ((long) (map.get("Latitude")));
         } else {
@@ -42,7 +42,7 @@ public int test;
                 longitude);
     }
     static Map<String, Object> sightingToFireBase(RatSighting sighting) {
-        Map<String, Object> data = new HashMap<String, Object>();
+        Map<String, Object> data = new HashMap<>();
         data.put(("Created Date"), sighting.getCreatedDate());
         data.put(("Location Type"), sighting.getLocationType());
         data.put(("Incident Zip"), sighting.getIncidentZip());

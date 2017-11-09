@@ -33,7 +33,7 @@ import team45.ratfinder.model.RatSighting;
 
 public class GraphActivity extends AppCompatActivity {
 
-    //private LinkedList<RatSighting> sightingsList;
+    
 
 
     @Override
@@ -44,13 +44,18 @@ public class GraphActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         setSupportActionBar(toolbar);
 
+        ArrayList<RatSighting> ratList = new ArrayList<>();
         Bundle bdl = getIntent().getExtras();
-        ArrayList<RatSighting> ratList = bdl.getParcelableArrayList("Data");
-
+        if (bdl.getParcelableArrayList("Data") != null) {
+            ratList = bdl.getParcelableArrayList("Data");
+        }
         SimpleDateFormat formatter = new SimpleDateFormat("MM/01/YYYY");
-        String d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
-        String d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
-
+        String d1 = "";
+        String d2 = "";
+        if (ratList.get(0) != null && ratList.get(ratList.size()-1) != null) {
+            d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
+            d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
+        }
         HashMap<String, Integer> ratMap = monthCounter(ratList);
         DataPoint[] dataPoints = new DataPoint[ratMap.size()];
         int i = 0;
@@ -102,10 +107,10 @@ public class GraphActivity extends AppCompatActivity {
 
         try {
             Date d = dfm.parse(d1); //need the extra date info for complete date, will have to modify this for sorting by year etc
-            d.setMonth(d.getMonth()+0);
+            d.setMonth(d.getMonth());
             graph.getViewport().setMaxX(d.getTime());
             Date dNext = dfm.parse(d2);
-            dNext.setMonth(dNext.getMonth() -0);
+            dNext.setMonth(dNext.getMonth());
             graph.getViewport().setMinX(dNext.getTime());
             graph.getViewport().setMinY(Math.min(ratMap.get(d1), ratMap.get(d2))-50);
             graph.getViewport().setMaxY(Math.max(ratMap.get(d2), ratMap.get(d1))+50);

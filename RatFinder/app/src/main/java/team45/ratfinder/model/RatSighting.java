@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.Date;
 
 /**
- * RatSighting Class Created by Lauren on 10/5/17.
+ * RatSighting Class created by Lauren on 10/5/17.
  */
 
 public class RatSighting implements Parcelable{

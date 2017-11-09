@@ -87,9 +87,10 @@ public class RegisterActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             Log.w("LOG IN STATUS", "createUserWithEmail:failure", task.getException());
                             FirebaseException e = (FirebaseException)task.getException();
-
-                            Toast.makeText(RegisterActivity.this, e.getMessage(),
-                                    Toast.LENGTH_SHORT).show();
+                            if (e.getMessage() != null) {
+                                Toast.makeText(RegisterActivity.this, e.getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
@@ -110,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     private String cleanEmail(String email) {
-        //firebase can't add a key with the following characters present directly so email must be
+        //Fire Base can't add a key with the following characters present directly so email must be
         //cleaned
         email = email.replace(".", "");
         email = email.replace("#", "");
