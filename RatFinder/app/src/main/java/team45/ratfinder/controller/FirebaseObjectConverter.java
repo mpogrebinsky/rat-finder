@@ -6,11 +6,11 @@ import java.util.Map;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Created by Maya Pogrebinsky on 10/7/2017.
+ * Class created by Maya on 10/7/2017.
  */
 
 public class FirebaseObjectConverter {
-public int test;
+//public int test;
     public static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
         int incidentZip;
         try {

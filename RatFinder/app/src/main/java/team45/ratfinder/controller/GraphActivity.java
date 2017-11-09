@@ -28,12 +28,12 @@ import team45.ratfinder.model.RatSighting;
 
 
 /**
- * Created by Janet on 10/26/17.
+ * Class created by Janet on 10/26/17.
  */
 
 public class GraphActivity extends AppCompatActivity {
 
-    
+
 
 
     @Override
@@ -46,13 +46,13 @@ public class GraphActivity extends AppCompatActivity {
 
         ArrayList<RatSighting> ratList = new ArrayList<>();
         Bundle bdl = getIntent().getExtras();
-        if (bdl.getParcelableArrayList("Data") != null) {
+        if (bdl != null) {
             ratList = bdl.getParcelableArrayList("Data");
         }
         SimpleDateFormat formatter = new SimpleDateFormat("MM/01/YYYY");
         String d1 = "";
         String d2 = "";
-        if (ratList.get(0) != null && ratList.get(ratList.size()-1) != null) {
+        if (ratList != null ) {
             d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
             d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
         }
@@ -100,8 +100,11 @@ public class GraphActivity extends AppCompatActivity {
 
 // set manual x bounds to have nice steps
         //d1 and d3 need to be changed to be months that are included in the graph
-        Log.d("D1DEBUG", new Date(ratList.get(0).getCreatedDate()).toString()+"");
-        Log.d("D2DEBUG", new Date(ratList.get(ratList.size()-1).getCreatedDate()).toString()+"");
+        if (ratList != null) {
+            Log.d("D1DEBUG", new Date(ratList.get(0).getCreatedDate()).toString()+"");
+            Log.d("D2DEBUG", new Date(ratList.get(ratList.size()-1).getCreatedDate()).toString()+"");
+        }
+
 
         DateFormat dfm = new SimpleDateFormat("MM/01/yyyy", Locale.US);
 
@@ -133,7 +136,7 @@ public class GraphActivity extends AppCompatActivity {
      * @param ratList list of all of the RatSightings from the Start Activity
      * @return a hash map with keys as the different months with the values being the # of sightings in that month
      */
-    public HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+    private HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
         HashMap<String, Integer> ratMap = new HashMap<>();
     /*private HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
         HashMap<Integer, Integer> ratMap = new HashMap<>();*/

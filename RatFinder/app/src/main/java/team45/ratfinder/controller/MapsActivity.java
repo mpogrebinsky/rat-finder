@@ -29,9 +29,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Bundle bdl = getIntent().getExtras();
-        if (bdl.getParcelableArrayList("Data") != null) {
+        if (bdl != null) {
             ArrayList<RatSighting> test = bdl.getParcelableArrayList("Data");
-            this.sightingsList = new LinkedList<>(test);
+            if (test != null) {
+                this.sightingsList = new LinkedList<>(test);
+            }
+
         }
     }
 

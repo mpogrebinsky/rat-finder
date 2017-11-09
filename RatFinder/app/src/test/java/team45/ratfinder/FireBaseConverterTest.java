@@ -1,15 +1,11 @@
 package team45.ratfinder;
 
-import com.google.firebase.auth.FirebaseUser;
 
 import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import team45.ratfinder.controller.FirebaseObjectConverter;
 import team45.ratfinder.controller.Model;
-import team45.ratfinder.controller.RegisterActivity;
 import team45.ratfinder.model.RatSighting;
 
 import static org.junit.Assert.assertEquals;

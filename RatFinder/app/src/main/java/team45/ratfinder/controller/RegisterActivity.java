@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             Log.w("LOG IN STATUS", "createUserWithEmail:failure", task.getException());
                             FirebaseException e = (FirebaseException)task.getException();
-                            if (e.getMessage() != null) {
+                            if (e != null) {
                                 Toast.makeText(RegisterActivity.this, e.getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             }

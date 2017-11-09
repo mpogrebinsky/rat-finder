@@ -1,7 +1,7 @@
 package team45.ratfinder.controller;
 
 /**
- * Created by Lauren on 11/9/17.
+ * Class created by Lauren on 11/9/17.
  */
 
 public class Model {
