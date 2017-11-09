@@ -6,20 +6,20 @@ import java.util.Map;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Firebase Object converter class created by Maya on 10/7/2017.
+ * Created by Maya Pogrebinsky on 10/7/2017.
  */
 
-class FirebaseObjectConverter {
-//public int test;
-    static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
-        int incidentZip;
+public class FirebaseObjectConverter {
+public int test;
+    public static RatSighting getRatSighting(Map<String, Object> map, String uniqueKey) {
+        int incidentZip = 0;
         try {
             incidentZip = ((Long) (Long.parseLong(map.get("Incident Zip").toString()))).intValue();
         } catch(NumberFormatException e) {
             incidentZip = 0;
         }
-        double latitude;
-        double longitude;
+        double latitude = 0;
+        double longitude = 0;
         if (map.get("Latitude") instanceof Long) {
             latitude = map.get("Latitude").toString().equals("") ? 0: ((long) (map.get("Latitude")));
         } else {
@@ -42,15 +42,15 @@ class FirebaseObjectConverter {
                 longitude);
     }
     static Map<String, Object> sightingToFireBase(RatSighting sighting) {
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<String, Object>();
         data.put(("Created Date"), sighting.getCreatedDate());
         data.put(("Location Type"), sighting.getLocationType());
         data.put(("Incident Zip"), sighting.getIncidentZip());
         data.put(("Incident Address"), sighting.getIncidentAddress());
         data.put(("City"), sighting.getCity());
         data.put(("Borough"), sighting.getBorough());
-        data.put(("Latitude"), sighting.getLatitude());
-        data.put(("Longitude"), sighting.getLongitude());
+        data.put(("Latitude"), (double) sighting.getLatitude());
+        data.put(("Longitude"), (double) sighting.getLongitude());
         return data;
 
 
