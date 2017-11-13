@@ -48,7 +48,6 @@ public class testAddUser {
         assertFalse(testModel.addUser(maya));
         assertEquals(3, testModel.getRegisteredUsers().size());
         assertTrue(testModel.getRegisteredUsers().containsKey(maya.getUsername()));
-        //assertEquals(, testModel.getRegisteredUsers().get(maya.getUsername()));
     }
 
     @Test

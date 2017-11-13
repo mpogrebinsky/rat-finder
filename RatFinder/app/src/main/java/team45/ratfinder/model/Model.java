@@ -39,7 +39,7 @@ public class Model {
         registeredUsers = userMap;
     }
 
-    public User loggedInUser = new User();
+    public User loggedInUser = new User("user", "pass");
 
     /**
      * This will check to see if the user that is trying to register is a valid user.
