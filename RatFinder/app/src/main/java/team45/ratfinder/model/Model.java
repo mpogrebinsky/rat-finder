@@ -1,3 +1,4 @@
+
 package team45.ratfinder.model;
 
 import android.util.Log;

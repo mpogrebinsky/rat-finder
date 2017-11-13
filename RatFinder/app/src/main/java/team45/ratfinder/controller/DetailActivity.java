@@ -21,14 +21,14 @@ import team45.ratfinder.R;
 import team45.ratfinder.model.RatSighting;
 
 /**
- * Created by janettanzy on 10/5/17.
+ * Detail Activity Created by Janet on 10/5/17.
  */
 
 public class DetailActivity extends AppCompatActivity {
 
 
     private RatSighting ratSighting;
-    private DatabaseReference ratSightingReference;
+
 
     private TextView date;
     private TextView incidentAddress;
@@ -47,9 +47,11 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        DatabaseReference ratSightingReference;
         date = (TextView) findViewById(R.id.date);
         incidentAddress = (TextView) findViewById(R.id.incidentAddress);
         incidentZip = (TextView) findViewById(R.id.incidentZip);
@@ -64,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         ratSightingReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("Firebase", dataSnapshot.getValue().toString());
+                Log.d("Fire Base", dataSnapshot.getValue().toString());
                 ratSighting = FirebaseObjectConverter.getRatSighting((Map)dataSnapshot.getValue(), uniqueKeyStringExtra);
                 date.setText(ratSighting.getCreatedDateString());
                 incidentAddress.setText(ratSighting.getIncidentAddress());
