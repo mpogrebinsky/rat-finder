@@ -97,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     private void onCreationSuccess(FirebaseUser user) {
-        //FirebaseUser currentUser = user;
         //this is to set an admin flag for the account in case a distinction is later needed.
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users");

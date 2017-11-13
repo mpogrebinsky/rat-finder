@@ -49,8 +49,8 @@ public class FirebaseObjectConverter {
         data.put(("Incident Address"), sighting.getIncidentAddress());
         data.put(("City"), sighting.getCity());
         data.put(("Borough"), sighting.getBorough());
-        data.put(("Latitude"), (double) sighting.getLatitude());
-        data.put(("Longitude"), (double) sighting.getLongitude());
+        data.put(("Latitude"), sighting.getLatitude());
+        data.put(("Longitude"), sighting.getLongitude());
         return data;
 
 

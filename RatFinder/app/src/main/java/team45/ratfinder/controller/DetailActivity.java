@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         ratSightingReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("Firebase", dataSnapshot.getValue().toString());
+                Log.d("Fire Base", dataSnapshot.getValue().toString());
                 ratSighting = FirebaseObjectConverter.getRatSighting((Map)dataSnapshot.getValue(), uniqueKeyStringExtra);
                 date.setText(ratSighting.getCreatedDateString());
                 incidentAddress.setText(ratSighting.getIncidentAddress());
