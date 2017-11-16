@@ -1,3 +1,4 @@
+
 package team45.ratfinder.model;
 
 import android.util.Log;
@@ -32,10 +33,13 @@ public class Model {
     public static Model getInstance() { return _instance; }
 
     /** Singleton instance */
-    private static final HashMap<String, User> registeredUsers = new HashMap<String, User>();
+    private static HashMap<String, User> registeredUsers = new HashMap<String, User>();
     public static HashMap<String, User> getRegisteredUsersInstance() { return registeredUsers; }
+    public void setRegisteredUsers(HashMap<String, User> userMap) {
+        registeredUsers = userMap;
+    }
 
-    public User loggedInUser = new User();
+    public User loggedInUser = new User("user", "pass");
 
     /**
      * This will check to see if the user that is trying to register is a valid user.

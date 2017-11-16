@@ -28,30 +28,34 @@ import team45.ratfinder.model.RatSighting;
 
 
 /**
- * Created by janettanzy on 10/26/17.
+ * Class created by Janet on 10/26/17.
  */
 
 public class GraphActivity extends AppCompatActivity {
 
-    //private LinkedList<RatSighting> sightingsList;
 
-    private GraphView graph;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-        graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graph);
         setSupportActionBar(toolbar);
 
+        ArrayList<RatSighting> ratList = new ArrayList<>();
         Bundle bdl = getIntent().getExtras();
-        ArrayList<RatSighting> ratList = bdl.getParcelableArrayList("Data");
-
+        if (bdl != null) {
+            ratList = bdl.getParcelableArrayList("Data");
+        }
         SimpleDateFormat formatter = new SimpleDateFormat("MM/01/YYYY");
-        String d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
-        String d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
-
+        String d1 = "";
+        String d2 = "";
+        if (ratList != null ) {
+            d1 = formatter.format(new Date(ratList.get(0).getCreatedDate()));
+            d2 = formatter.format(new Date(ratList.get(ratList.size()-1).getCreatedDate()));
+        }
         HashMap<String, Integer> ratMap = monthCounter(ratList);
         DataPoint[] dataPoints = new DataPoint[ratMap.size()];
         int i = 0;
@@ -96,17 +100,20 @@ public class GraphActivity extends AppCompatActivity {
 
 // set manual x bounds to have nice steps
         //d1 and d3 need to be changed to be months that are included in the graph
-        Log.d("D1DEBUG", new Date(ratList.get(0).getCreatedDate()).toString()+"");
-        Log.d("D2DEBUG", new Date(ratList.get(ratList.size()-1).getCreatedDate()).toString()+"");
+        if (ratList != null) {
+            Log.d("D1DEBUG", new Date(ratList.get(0).getCreatedDate()).toString()+"");
+            Log.d("D2DEBUG", new Date(ratList.get(ratList.size()-1).getCreatedDate()).toString()+"");
+        }
+
 
         DateFormat dfm = new SimpleDateFormat("MM/01/yyyy", Locale.US);
 
         try {
             Date d = dfm.parse(d1); //need the extra date info for complete date, will have to modify this for sorting by year etc
-            d.setMonth(d.getMonth()+0);
+            d.setMonth(d.getMonth());
             graph.getViewport().setMaxX(d.getTime());
             Date dNext = dfm.parse(d2);
-            dNext.setMonth(dNext.getMonth() -0);
+            dNext.setMonth(dNext.getMonth());
             graph.getViewport().setMinX(dNext.getTime());
             graph.getViewport().setMinY(Math.min(ratMap.get(d1), ratMap.get(d2))-50);
             graph.getViewport().setMaxY(Math.max(ratMap.get(d2), ratMap.get(d1))+50);
@@ -129,8 +136,10 @@ public class GraphActivity extends AppCompatActivity {
      * @param ratList list of all of the RatSightings from the Start Activity
      * @return a hash map with keys as the different months with the values being the # of sightings in that month
      */
-    public HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+    private HashMap<String, Integer> monthCounter(ArrayList<RatSighting> ratList) {
         HashMap<String, Integer> ratMap = new HashMap<>();
+    /*private HashMap<Integer, Integer> monthCounter(ArrayList<RatSighting> ratList) {
+        HashMap<Integer, Integer> ratMap = new HashMap<>();*/
         for (RatSighting rat : ratList) {
             //Long month = rat.getCreatedDate();
             //parse this long for month and date - our idea was to divide the long by a number that will get you this info

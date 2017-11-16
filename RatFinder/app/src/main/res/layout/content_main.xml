@@ -12,12 +12,12 @@
         android:id="@+id/register"
         android:layout_width="164dp"
         android:layout_height="43dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="14dp"
         android:text="Register"
         android:textColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/errorMessage"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorMessage" />
 
     <Button
         android:id="@+id/submit_id"
@@ -59,25 +59,22 @@
         android:layout_width="329dp"
         android:layout_height="45dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
         android:text="Username"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="26dp"
-        android:text="Sign In"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_ratfindericon" />
 
 </android.support.constraint.ConstraintLayout>

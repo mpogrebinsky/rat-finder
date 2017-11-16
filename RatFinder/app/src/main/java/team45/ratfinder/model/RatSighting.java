@@ -6,20 +6,20 @@ import android.os.Parcelable;
 import java.util.Date;
 
 /**
- * Created by laurenyapp on 10/5/17.
+ * RatSighting Class created by Lauren on 10/5/17.
  */
 
 public class RatSighting implements Parcelable{
 
-    private String uniqueKey;
-    private long createdDate;
-    private String locationType;
-    private int incidentZip;
-    private String incidentAddress;
-    private String city;
-    private String borough;
-    private double latitude;
-    private double longitude;
+    private final String uniqueKey;
+    private final long createdDate;
+    private final String locationType;
+    private final int incidentZip;
+    private final String incidentAddress;
+    private final String city;
+    private final String borough;
+    private final double latitude;
+    private final double longitude;
 
     /**
      * This is the constructor for creating a new rat sighting object.
