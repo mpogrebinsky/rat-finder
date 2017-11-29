@@ -41,7 +41,7 @@ public class FirebaseObjectConverter {
                 latitude,
                 longitude);
     }
-    static Map<String, Object> sightingToFireBase(RatSighting sighting) {
+    public static Map<String, Object> sightingToFireBase(RatSighting sighting) {
         Map<String, Object> data = new HashMap<>();
         data.put(("Created Date"), sighting.getCreatedDate());
         data.put(("Location Type"), sighting.getLocationType());
