@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Rat Finder</string>
     <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">387476641683757</string>
+    <string name="fb_login_protocol_scheme">fb387476641683757</string>
+    <array name="facebook_permissions">
+        <item>email</item>
+        <item>public_profile</item>
+    </array>
 </resources>
